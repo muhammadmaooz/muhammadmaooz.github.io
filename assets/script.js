@@ -1,54 +1,29 @@
-const url = './pdfs/vip_past_paper_class11_kohat_2025.pdf'; // PDF path
+const url = './pdfs/vip_past_paper_class11_kohat_2025.pdf';
+const canvas = document.getElementById('pdf-viewer');
+const ctx = canvas.getContext('2d');
 
-const pdfjsLib = window['pdfjs-dist/build/pdf'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.241/pdf.worker.min.js';
 
-let pdfDoc = null, pageNum = 1, canvas = document.getElementById('pdf-viewer'), ctx = canvas.getContext('2d');
+let pdfDoc = null;
+let pageNum = 1;
 
-// Render any page
-function renderPage(num){
-    pdfDoc.getPage(num).then(function(page){
-        const viewport = page.getViewport({scale:1.5});
+function renderPage(num) {
+    pdfDoc.getPage(num).then(page => {
+        const viewport = page.getViewport({ scale: 1.5 });
         canvas.height = viewport.height;
         canvas.width = viewport.width;
-        page.render({canvasContext: ctx, viewport: viewport});
+
+        const renderCtx = {
+            canvasContext: ctx,
+            viewport: viewport
+        };
+        page.render(renderCtx);
     });
 }
 
-// Show previous/next page controls
-function showPageControls(){
-    const controls = document.createElement('div');
-    controls.style.textAlign = 'center';
-    controls.style.marginTop = '10px';
-    controls.innerHTML = `
-        <button id="prevPage">Previous</button>
-        <span id="pageInfo">Page ${pageNum} / ${pdfDoc.numPages}</span>
-        <button id="nextPage">Next</button>
-    `;
-    document.querySelector('.pdf-section').appendChild(controls);
-
-    document.getElementById('prevPage').addEventListener('click', ()=>{
-        if(pageNum <= 1) return;
-        pageNum--;
-        renderPage(pageNum);
-        document.getElementById('pageInfo').textContent = `Page ${pageNum} / ${pdfDoc.numPages}`;
-    });
-
-    document.getElementById('nextPage').addEventListener('click', ()=>{
-        if(pageNum >= pdfDoc.numPages) return;
-        pageNum++;
-        renderPage(pageNum);
-        document.getElementById('pageInfo').textContent = `Page ${pageNum} / ${pdfDoc.numPages}`;
-    });
-}
-
-// Load PDF
-pdfjsLib.getDocument(url).promise.then(function(pdf){
-    pdfDoc = pdf;
+pdfjsLib.getDocument(url).promise.then(doc => {
+    pdfDoc = doc;
     renderPage(pageNum);
-    showPageControls();
 }).catch(err => {
-    console.error("PDF loading error: ", err);
+    console.error("PDF loading error:", err);
 });
-
-
