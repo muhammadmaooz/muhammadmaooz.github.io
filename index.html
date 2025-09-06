@@ -3,86 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammad Maooz - Mentor</title>
+<title>Muhammad Maooz (Mentor) - Class 11 Past Papers VIP</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 <style>
+    /* Reset & basic styles */
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Orbitron', sans-serif; }
     body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #1f1c2c, #928dab);
+        background: radial-gradient(circle at top left, #0f0c29, #302b63, #24243e);
         color: #fff;
         overflow-x: hidden;
     }
     header {
-        text-align: center;
-        padding: 40px 20px;
-        font-size: 2.5em;
-        font-weight: bold;
-        animation: fadeIn 2s ease-in-out;
+        width: 100%;
+        position: fixed;
+        top:0;
+        left:0;
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+        padding: 20px 40px;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        animation: fadeIn 2s ease;
     }
-    header span {
-        display: block;
-        font-size: 1.2em;
-        font-weight: normal;
-        margin-top: 10px;
-        color: #00ffff;
+    header h1 { font-size:2rem; color:#0ff; cursor:pointer; transition: 0.5s; }
+    header h1:hover { color:#f0f; transform: scale(1.1); }
+    /* Search icon */
+    .search-container { position: relative; }
+    .search-icon {
+        width:30px; height:30px;
+        background:url('https://img.icons8.com/ios-filled/50/search--v1.png') no-repeat center/contain;
+        cursor:pointer;
+        transition:0.3s;
     }
-    .viewer-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px;
-        animation: fadeInUp 2s ease-in-out;
+    .search-bar {
+        position:absolute;
+        top:0; right:40px;
+        width:0; opacity:0;
+        transition: width 0.5s ease, opacity 0.5s ease;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border:none;
+        outline:none;
     }
-    iframe {
-        width: 90%;
-        height: 80vh;
-        border: 3px solid #00ffff;
-        border-radius: 10px;
-        box-shadow: 0 0 30px #00ffff;
+    .search-bar.active { width:200px; opacity:1; }
+
+    /* WhatsApp icon */
+    .whatsapp {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px; height:50px;
+        background: #25D366;
+        border-radius:50%;
+        cursor:pointer;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size: 1.5rem;
+        transition: transform 0.3s;
     }
-    footer {
-        text-align: center;
-        margin: 30px 10px;
-        font-size: 1em;
-        color: #fff;
+    .whatsapp:hover { transform: scale(1.2); }
+    .whatsapp-number {
+        position:absolute;
+        bottom: 80px;
+        right:20px;
+        background: rgba(0,0,0,0.7);
+        padding:5px 10px;
+        border-radius:5px;
+        display:none;
+        color:#0ff;
+        font-weight:bold;
     }
-    footer p {
-        margin: 5px 0;
-        color: #00ffff;
+    .whatsapp.show-number .whatsapp-number { display:block; animation: fadeIn 0.5s ease; }
+
+    main {
+        padding-top:100px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
     }
+    .pdf-section {
+        width:90%;
+        max-width:900px;
+        margin-top:40px;
+        position:relative;
+        animation: slideUp 1s ease;
+    }
+    /* PDF.js viewer */
+    #pdf-viewer {
+        border:2px solid #0ff;
+        border-radius:10px;
+        width:100%;
+        height:80vh;
+        background:#111;
+    }
+    /* Advertisement */
+    .ads {
+        margin-top:20px;
+        padding:15px;
+        background: rgba(0,255,255,0.1);
+        border:1px solid #0ff;
+        border-radius:10px;
+        text-align:center;
+        animation: fadeIn 2s ease;
+    }
+    .ads p { margin:5px 0; font-size:1rem; }
+
     /* Animations */
-    @keyframes fadeIn {
-        0% {opacity: 0; transform: translateY(-50px);}
-        100% {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInUp {
-        0% {opacity: 0; transform: translateY(50px);}
-        100% {opacity: 1; transform: translateY(0);}
-    }
-    /* Responsive */
-    @media(max-width:768px){
-        header {font-size: 1.8em;}
-        iframe {width: 100%; height: 70vh;}
-    }
+    @keyframes fadeIn { from {opacity:0} to {opacity:1} }
+    @keyframes slideUp { from {transform:translateY(50px); opacity:0} to {transform:translateY(0); opacity:1} }
+
 </style>
 </head>
 <body>
 
 <header>
-    Muhammad Maooz (Mentor)
-    <span>Class 11 Past Papers (2025) VIP</span>
+    <h1 onclick="goHome()">Muhammad Maooz (Mentor)</h1>
+    <div class="search-container">
+        <input type="text" class="search-bar" id="searchBar" placeholder="Search...">
+        <div class="search-icon" id="searchIcon"></div>
+    </div>
 </header>
 
-<div class="viewer-container">
-    <iframe src="pdfs/vip past paper class 11 kohat board 2025.pdf" title="VIP Past Paper" allowfullscreen></iframe>
+<main>
+    <h2 class="pdf-title" onclick="scrollToPDF()">Class 11 Past Papers (2025) VIP</h2>
+    <div class="pdf-section">
+        <canvas id="pdf-viewer"></canvas>
+    </div>
+
+    <div class="ads">
+        <p>For hacking and cybersecurity courses also tools contact on my WhatsApp</p>
+        <p>Trading and other courses all kinds of courses available</p>
+        <p>Every kind of software and hacking tools and games are available via WhatsApp</p>
+        <p>ALSO LEARN PROGRAMMING</p>
+        <p>Contact via WhatsApp: +92 314 9229215</p>
+    </div>
+</main>
+
+<div class="whatsapp" id="whatsappBtn">📱
+    <div class="whatsapp-number" id="whatsappNumber">+92 314 9229215</div>
 </div>
 
-<footer>
-    <p>For hacking and cybersecurity courses & tools contact on my WhatsApp</p>
-    <p>Trading and all kind of courses available</p>
-    <p>All kind of software, hacking tools & games available via WhatsApp</p>
-    <p>Also learn programming</p>
-    <p>Contact via WhatsApp: +92 314 9229215</p>
-</footer>
+<!-- PDF.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.241/pdf.min.js"></script>
+<script>
+const url = './pdfs/vip past paper class 11 kohat board 2025.pdf'; // PDF path
 
+const pdfjsLib = window['pdfjs-dist/build/pdf'];
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.241/pdf.worker.min.js';
+
+let pdfDoc = null, pageNum = 1, canvas = document.getElementById('pdf-viewer'), ctx = canvas.getContext('2d');
+
+function renderPage(num){
+    pdfDoc.getPage(num).then(function(page){
+        const viewport = page.getViewport({scale:1.5});
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        page.render({canvasContext:ctx, viewport:viewport});
+    });
+}
+
+pdfjsLib.getDocument(url).promise.then(function(pdf){
+    pdfDoc = pdf;
+    renderPage(pageNum);
+});
+
+// Search bar toggle
+const searchIcon = document.getElementById('searchIcon');
+const searchBar = document.getElementById('searchBar');
+searchIcon.addEventListener('mouseover', ()=>{ searchBar.style.width='150px'; searchBar.style.opacity=1; });
+searchIcon.addEventListener('click', ()=>{ searchBar.classList.toggle('active'); });
+
+// WhatsApp number toggle
+const whatsappBtn = document.getElementById('whatsappBtn');
+whatsappBtn.addEventListener('click', ()=>{ whatsappBtn.classList.toggle('show-number'); });
+
+// Scroll to PDF
+function scrollToPDF(){ document.querySelector('.pdf-section').scrollIntoView({behavior:'smooth'}); }
+function goHome(){ window.scrollTo({top:0, behavior:'smooth'}); }
+
+</script>
 </body>
 </html>
+
