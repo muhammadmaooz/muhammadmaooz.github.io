@@ -1,0 +1,106 @@
+:root{
+  --bg:#03040a;
+  --neon:#00ffe7;
+  --accent:#7fffd4;
+  --muted:#9aa0a6;
+  --glass: rgba(255,255,255,0.03);
+  --glass-2: rgba(0,0,0,0.45);
+  --maxWidth:1200px;
+}
+
+/* reset */
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; font-family:Inter,Segoe UI,system-ui,Arial,sans-serif; -webkit-font-smoothing:antialiased}
+body{
+  background:linear-gradient(180deg,#02020b 0%, #050517 60%);
+  color:#e9fdfc;
+  min-height:100vh;
+}
+
+/* background grid & big watermark */
+.bg-tiles{position:fixed; inset:0; z-index:0; background-image: radial-gradient(rgba(0,255,231,0.03) 1px, transparent 1px); background-size:44px 44px; opacity:0.85; filter: blur(6px) saturate(1.02); pointer-events:none}
+body::before{
+  content:"MAOOZ";
+  position:fixed; left:6%; top:18%; z-index:1; font-size:160px; color:rgba(0,255,231,0.03); transform:rotate(-14deg); pointer-events:none
+}
+
+/* HERO */
+.hero{min-height:64vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:48px 18px; position:relative; z-index:2}
+.hero-inner{max-width:var(--maxWidth); width:100%}
+.brand{font-family:'Orbitron',sans-serif; font-weight:700; font-size:clamp(28px,6vw,64px); color:var(--neon); letter-spacing:2px; text-transform:uppercase; text-shadow:0 0 14px rgba(0,255,231,0.12)}
+.brand .glow{color:#fff; text-shadow:0 0 36px rgba(0,255,231,0.45)}
+.mentor{font-size:0.36em; margin-left:10px; color:var(--muted)}
+.tagline{margin:12px 0 20px; color:rgba(255,255,255,0.78); font-weight:600}
+.vip{color:var(--accent)}
+
+/* top-right search fixed */
+.top-right{position:fixed; top:18px; right:18px; z-index:9}
+.search-wrap{display:flex; align-items:center; gap:6px; background:var(--glass); padding:6px 8px; border-radius:999px; border:1px solid rgba(0,255,231,0.06); box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.icon-btn{background:transparent; border:none; padding:8px; border-radius:50%; font-size:18px; color:var(--neon); cursor:pointer; transition:transform .12s}
+.icon-btn:hover{transform:scale(1.06)}
+.search-input{background:transparent; border:none; outline:none; color:#fff; width:0; opacity:0; transition:width .25s, opacity .25s; padding:6px 8px; font-size:15px}
+
+/* whatsapp fixed bottom-right */
+.whatsapp-fixed{position:fixed; right:18px; bottom:18px; z-index:9; display:flex; align-items:center; gap:10px; text-decoration:none}
+.wa-circle{width:56px;height:56px;border-radius:12px;background:linear-gradient(180deg,var(--accent),#0a9);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 14px 36px rgba(0,0,0,0.6); transition:transform .12s}
+.wa-circle:hover{transform:translateY(-6px)}
+.wa-tooltip{display:none; position:absolute; right:72px; bottom:22px; background:var(--glass-2); color:var(--neon); padding:8px 12px; border-radius:10px; border:1px solid rgba(0,255,231,0.08); font-weight:700}
+.whatsapp-fixed:hover .wa-tooltip{display:block}
+
+/* papers section */
+.papers-section{position:relative; z-index:2; padding:60px 18px 120px}
+.section-title{text-align:center; color:var(--neon); font-family:'Orbitron'; font-size:clamp(20px,4vw,30px); margin:0 0 26px; text-shadow:0 0 10px rgba(0,255,231,0.06)}
+
+/* cards grid */
+.cards{max-width:var(--maxWidth); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:28px; padding:6px}
+
+/* card */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:14px; padding:18px; position:relative; overflow:hidden; border:1px solid rgba(0,255,231,0.04); box-shadow:0 16px 48px rgba(0,0,0,0.6); transform:translateY(36px); opacity:0; animation:cardIn .6s forwards}
+.card.reveal{transform:none; opacity:1}
+.card h3{margin:0; color:var(--neon); font-family:'Orbitron'; font-size:18px}
+.card .sub{color:var(--muted); margin-top:6px; font-size:13px}
+.card-actions{display:flex; gap:10px; margin-top:14px; align-items:center}
+.open-btn{background:linear-gradient(90deg,var(--neon),var(--accent)); color:#012; border:none; padding:12px 14px; border-radius:12px; cursor:pointer; font-weight:800; box-shadow:0 10px 30px rgba(0,255,231,0.06); transition:transform .12s}
+.open-btn:hover{transform:translateY(-6px)}
+
+/* viewer modal */
+.viewer{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(0,0,0,0.75), rgba(0,0,0,0.9)); z-index:9999; padding:18px}
+.viewer.open{display:flex}
+.viewer-frame{width:96%; max-width:1100px; background:linear-gradient(180deg,#071018,#07121a); border-radius:14px; padding:12px; box-shadow:0 30px 120px rgba(0,0,0,0.9); border:1px solid rgba(0,255,231,0.05); position:relative}
+.viewer-header{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:12px}
+.vtitle{font-family:'Orbitron'; color:var(--neon); font-size:16px}
+.vcontrols{display:flex; gap:8px; align-items:center}
+.small{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--neon); padding:8px 10px; border-radius:8px; cursor:pointer}
+.small:disabled{opacity:0.35; cursor:not-allowed}
+.close{background:transparent; color:#fff; border:none; padding:8px 10px; cursor:pointer}
+
+/* canvas wrap */
+.canvas-wrap{background:#071014; border-radius:10px; padding:12px; display:flex; justify-content:center; align-items:center; min-height:480px; max-height:78vh; overflow:auto; border:1px solid rgba(0,255,231,0.03)}
+.canvas-wrap canvas{border-radius:8px; display:block; max-width:100%}
+.fallback-iframe{width:100%; min-height:720px; border-radius:10px; border:1px solid rgba(255,255,255,0.02)}
+
+/* ad box */
+.ad-box{margin-top:16px; padding:12px; border-radius:10px; background:linear-gradient(90deg, rgba(0,255,231,0.03), rgba(0,255,231,0.01)); color:var(--neon); font-weight:700; border:1px solid rgba(0,255,231,0.04)}
+
+/* comments placeholder */
+.comments.disabled{margin-top:16px; padding:12px; border-radius:10px; background:rgba(255,255,255,0.01); border:1px dashed rgba(255,255,255,0.03); color:var(--muted)}
+
+/* animations */
+@keyframes cardIn{from{transform:translateY(36px);opacity:0}to{transform:none;opacity:1}}
+@media (max-width:900px){
+  .cards{grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px}
+  .fallback-iframe{min-height:520px}
+  .canvas-wrap{min-height:360px}
+}
+@media (max-width:520px){
+  .top-right{right:10px; top:8px}
+  .search-input{width:180px !important; opacity:1 !important}
+  .brand{font-size:28px}
+  .wa-circle{width:50px;height:50px;font-size:20px}
+  .card{padding:14px}
+  .open-btn{padding:10px 12px}
+  .viewer-frame{padding:10px}
+  .canvas-wrap{min-height:300px}
+}
+
+/* ensure zoom scaling works: use max-widths and percentage widths consistently */

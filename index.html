@@ -1,16 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Class 11 & 12 past papers by Muhammad Maooz">
-    <title>Maooz Study Material</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+<meta name="description" content="Class 11 past papers by Muhammad Maooz (Mentor) — VIP 2025" />
+<title>Muhammad Maooz (Mentor)</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <h1>Maooz Study Material</h1>
-    <p>Free Class 11 & 12 past papers</p>
 
-    <h2>Sample PDF</h2>
-    <iframe src="pdfs/sample.pdf" width="600" height="400"></iframe>
+<!-- background watermark / tiles -->
+<div class="bg-tiles" aria-hidden="true"></div>
+
+<!-- HERO -->
+<header id="hero" class="hero">
+  <div class="hero-inner">
+    <h1 class="brand">Muhammad <span class="glow">Maooz</span> <small class="mentor">(Mentor)</small></h1>
+    <p class="tagline">Class 11 Past Papers — <span class="vip">VIP (2025)</span></p>
+  </div>
+
+  <!-- Top-right search -->
+  <div class="top-right" aria-hidden="false">
+    <div id="searchWrap" class="search-wrap" role="search">
+      <button id="searchBtn" class="icon-btn" aria-label="Open search">🔍</button>
+      <input id="searchInput" class="search-input" placeholder="Search papers, subject, year..." aria-label="Search papers">
+    </div>
+  </div>
+</header>
+
+<!-- WhatsApp fixed bottom-right -->
+<a id="whatsappLink" class="whatsapp-fixed" href="https://wa.me/923149229215" target="_blank" rel="noreferrer" title="WhatsApp +92 314 9229215">
+  <div class="wa-circle">🟢</div>
+  <div class="wa-tooltip">+92 314 9229215</div>
+</a>
+
+<!-- MAIN -->
+<main>
+  <section class="papers-section" id="papers">
+    <h2 class="section-title">Available Papers</h2>
+    <div id="cards" class="cards" aria-live="polite"></div>
+  </section>
+</main>
+
+<!-- VIEWER MODAL -->
+<div id="viewer" class="viewer" aria-hidden="true">
+  <div class="viewer-frame">
+    <div class="viewer-header">
+      <div id="vtitle" class="vtitle">Paper</div>
+      <div class="vcontrols">
+        <button id="homeBtn" class="small">Home</button>
+        <button id="prevBtn" class="small">Prev</button>
+        <span id="pageInfo" class="pageinfo">0 / 0</span>
+        <button id="nextBtn" class="small">Next</button>
+        <button id="closeBtn" class="close">Close ✕</button>
+      </div>
+    </div>
+
+    <div id="canvasWrap" class="canvas-wrap" role="region" aria-label="PDF viewer"></div>
+
+    <div class="ad-box">
+      <p><strong>For hacking and cybersecurity courses also tools contact on my WhatsApp</strong></p>
+      <p>Trading and other courses available</p>
+      <p>All kinds of software, hacking tools and games available via WhatsApp</p>
+      <p>ALSO LEARN PROGRAMMING</p>
+      <p>Contact via WhatsApp: <strong>+92 314 9229215</strong></p>
+    </div>
+
+    <!-- comments placeholder (disabled until backend configured) -->
+    <section class="comments disabled">
+      <h3>Comments (disabled)</h3>
+      <p class="small-note">Comments are not configured yet. They will be public when enabled. Admin can delete comments manually.</p>
+    </section>
+  </div>
+</div>
+
+<!-- pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="assets/script.js"></script>
 </body>
 </html>
