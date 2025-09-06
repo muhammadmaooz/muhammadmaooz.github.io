@@ -1,83 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-<meta name="description" content="Class 11 past papers by Muhammad Maooz (Mentor) — VIP 2025" />
-<title>Muhammad Maooz (Mentor)</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Maooz - Mentor</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #1f1c2c, #928dab);
+        color: #fff;
+        overflow-x: hidden;
+    }
+    header {
+        text-align: center;
+        padding: 40px 20px;
+        font-size: 2.5em;
+        font-weight: bold;
+        animation: fadeIn 2s ease-in-out;
+    }
+    header span {
+        display: block;
+        font-size: 1.2em;
+        font-weight: normal;
+        margin-top: 10px;
+        color: #00ffff;
+    }
+    .viewer-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+        animation: fadeInUp 2s ease-in-out;
+    }
+    iframe {
+        width: 90%;
+        height: 80vh;
+        border: 3px solid #00ffff;
+        border-radius: 10px;
+        box-shadow: 0 0 30px #00ffff;
+    }
+    footer {
+        text-align: center;
+        margin: 30px 10px;
+        font-size: 1em;
+        color: #fff;
+    }
+    footer p {
+        margin: 5px 0;
+        color: #00ffff;
+    }
+    /* Animations */
+    @keyframes fadeIn {
+        0% {opacity: 0; transform: translateY(-50px);}
+        100% {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+        0% {opacity: 0; transform: translateY(50px);}
+        100% {opacity: 1; transform: translateY(0);}
+    }
+    /* Responsive */
+    @media(max-width:768px){
+        header {font-size: 1.8em;}
+        iframe {width: 100%; height: 70vh;}
+    }
+</style>
 </head>
 <body>
 
-<!-- background watermark / tiles -->
-<div class="bg-tiles" aria-hidden="true"></div>
-
-<!-- HERO -->
-<header id="hero" class="hero">
-  <div class="hero-inner">
-    <h1 class="brand">Muhammad <span class="glow">Maooz</span> <small class="mentor">(Mentor)</small></h1>
-    <p class="tagline">Class 11 Past Papers — <span class="vip">VIP (2025)</span></p>
-  </div>
-
-  <!-- Top-right search -->
-  <div class="top-right" aria-hidden="false">
-    <div id="searchWrap" class="search-wrap" role="search">
-      <button id="searchBtn" class="icon-btn" aria-label="Open search">🔍</button>
-      <input id="searchInput" class="search-input" placeholder="Search papers, subject, year..." aria-label="Search papers">
-    </div>
-  </div>
+<header>
+    Muhammad Maooz (Mentor)
+    <span>Class 11 Past Papers (2025) VIP</span>
 </header>
 
-<!-- WhatsApp fixed bottom-right -->
-<a id="whatsappLink" class="whatsapp-fixed" href="https://wa.me/923149229215" target="_blank" rel="noreferrer" title="WhatsApp +92 314 9229215">
-  <div class="wa-circle">🟢</div>
-  <div class="wa-tooltip">+92 314 9229215</div>
-</a>
-
-<!-- MAIN -->
-<main>
-  <section class="papers-section" id="papers">
-    <h2 class="section-title">Available Papers</h2>
-    <div id="cards" class="cards" aria-live="polite"></div>
-  </section>
-</main>
-
-<!-- VIEWER MODAL -->
-<div id="viewer" class="viewer" aria-hidden="true">
-  <div class="viewer-frame">
-    <div class="viewer-header">
-      <div id="vtitle" class="vtitle">Paper</div>
-      <div class="vcontrols">
-        <button id="homeBtn" class="small">Home</button>
-        <button id="prevBtn" class="small">Prev</button>
-        <span id="pageInfo" class="pageinfo">0 / 0</span>
-        <button id="nextBtn" class="small">Next</button>
-        <button id="closeBtn" class="close">Close ✕</button>
-      </div>
-    </div>
-
-    <div id="canvasWrap" class="canvas-wrap" role="region" aria-label="PDF viewer"></div>
-
-    <div class="ad-box">
-      <p><strong>For hacking and cybersecurity courses also tools contact on my WhatsApp</strong></p>
-      <p>Trading and other courses available</p>
-      <p>All kinds of software, hacking tools and games available via WhatsApp</p>
-      <p>ALSO LEARN PROGRAMMING</p>
-      <p>Contact via WhatsApp: <strong>+92 314 9229215</strong></p>
-    </div>
-
-    <!-- comments placeholder (disabled until backend configured) -->
-    <section class="comments disabled">
-      <h3>Comments (disabled)</h3>
-      <p class="small-note">Comments are not configured yet. They will be public when enabled. Admin can delete comments manually.</p>
-    </section>
-  </div>
+<div class="viewer-container">
+    <iframe src="pdfs/vip past paper class 11 kohat board 2025.pdf" title="VIP Past Paper" allowfullscreen></iframe>
 </div>
 
-<!-- pdf.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-<script src="assets/script.js"></script>
+<footer>
+    <p>For hacking and cybersecurity courses & tools contact on my WhatsApp</p>
+    <p>Trading and all kind of courses available</p>
+    <p>All kind of software, hacking tools & games available via WhatsApp</p>
+    <p>Also learn programming</p>
+    <p>Contact via WhatsApp: +92 314 9229215</p>
+</footer>
+
 </body>
 </html>
