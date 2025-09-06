@@ -4,119 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Muhammad Maooz (Mentor) - Class 11 Past Papers VIP</title>
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-<style>
-    /* Reset & basic styles */
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Orbitron', sans-serif; }
-    body {
-        background: radial-gradient(circle at top left, #0f0c29, #302b63, #24243e);
-        color: #fff;
-        overflow-x: hidden;
-    }
-    header {
-        width: 100%;
-        position: fixed;
-        top:0;
-        left:0;
-        display:flex;
-        justify-content: space-between;
-        align-items:center;
-        padding: 20px 40px;
-        background: rgba(0,0,0,0.5);
-        backdrop-filter: blur(5px);
-        z-index: 1000;
-        animation: fadeIn 2s ease;
-    }
-    header h1 { font-size:2rem; color:#0ff; cursor:pointer; transition: 0.5s; }
-    header h1:hover { color:#f0f; transform: scale(1.1); }
-    /* Search icon */
-    .search-container { position: relative; }
-    .search-icon {
-        width:30px; height:30px;
-        background:url('https://img.icons8.com/ios-filled/50/search--v1.png') no-repeat center/contain;
-        cursor:pointer;
-        transition:0.3s;
-    }
-    .search-bar {
-        position:absolute;
-        top:0; right:40px;
-        width:0; opacity:0;
-        transition: width 0.5s ease, opacity 0.5s ease;
-        padding: 5px 10px;
-        border-radius: 5px;
-        border:none;
-        outline:none;
-    }
-    .search-bar.active { width:200px; opacity:1; }
-
-    /* WhatsApp icon */
-    .whatsapp {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px; height:50px;
-        background: #25D366;
-        border-radius:50%;
-        cursor:pointer;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        font-size: 1.5rem;
-        transition: transform 0.3s;
-    }
-    .whatsapp:hover { transform: scale(1.2); }
-    .whatsapp-number {
-        position:absolute;
-        bottom: 80px;
-        right:20px;
-        background: rgba(0,0,0,0.7);
-        padding:5px 10px;
-        border-radius:5px;
-        display:none;
-        color:#0ff;
-        font-weight:bold;
-    }
-    .whatsapp.show-number .whatsapp-number { display:block; animation: fadeIn 0.5s ease; }
-
-    main {
-        padding-top:100px;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-    }
-    .pdf-section {
-        width:90%;
-        max-width:900px;
-        margin-top:40px;
-        position:relative;
-        animation: slideUp 1s ease;
-    }
-    /* PDF.js viewer */
-    #pdf-viewer {
-        border:2px solid #0ff;
-        border-radius:10px;
-        width:100%;
-        height:80vh;
-        background:#111;
-    }
-    /* Advertisement */
-    .ads {
-        margin-top:20px;
-        padding:15px;
-        background: rgba(0,255,255,0.1);
-        border:1px solid #0ff;
-        border-radius:10px;
-        text-align:center;
-        animation: fadeIn 2s ease;
-    }
-    .ads p { margin:5px 0; font-size:1rem; }
-
-    /* Animations */
-    @keyframes fadeIn { from {opacity:0} to {opacity:1} }
-    @keyframes slideUp { from {transform:translateY(50px); opacity:0} to {transform:translateY(0); opacity:1} }
-
-</style>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
@@ -147,45 +36,8 @@
     <div class="whatsapp-number" id="whatsappNumber">+92 314 9229215</div>
 </div>
 
-<!-- PDF.js library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.241/pdf.min.js"></script>
-<script>
-const url = './pdfs/vip past paper class 11 kohat board 2025.pdf'; // PDF path
+<script src="assets/script.js"></script>
 
-const pdfjsLib = window['pdfjs-dist/build/pdf'];
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.241/pdf.worker.min.js';
-
-let pdfDoc = null, pageNum = 1, canvas = document.getElementById('pdf-viewer'), ctx = canvas.getContext('2d');
-
-function renderPage(num){
-    pdfDoc.getPage(num).then(function(page){
-        const viewport = page.getViewport({scale:1.5});
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-        page.render({canvasContext:ctx, viewport:viewport});
-    });
-}
-
-pdfjsLib.getDocument(url).promise.then(function(pdf){
-    pdfDoc = pdf;
-    renderPage(pageNum);
-});
-
-// Search bar toggle
-const searchIcon = document.getElementById('searchIcon');
-const searchBar = document.getElementById('searchBar');
-searchIcon.addEventListener('mouseover', ()=>{ searchBar.style.width='150px'; searchBar.style.opacity=1; });
-searchIcon.addEventListener('click', ()=>{ searchBar.classList.toggle('active'); });
-
-// WhatsApp number toggle
-const whatsappBtn = document.getElementById('whatsappBtn');
-whatsappBtn.addEventListener('click', ()=>{ whatsappBtn.classList.toggle('show-number'); });
-
-// Scroll to PDF
-function scrollToPDF(){ document.querySelector('.pdf-section').scrollIntoView({behavior:'smooth'}); }
-function goHome(){ window.scrollTo({top:0, behavior:'smooth'}); }
-
-</script>
 </body>
 </html>
-
